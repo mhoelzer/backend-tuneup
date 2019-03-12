@@ -31,6 +31,8 @@ The timeit interface can be a bit confusing to use from within a program, so her
 
 There is a reason for using the min() of the averages. The fastest time represents the best an algorithm can perform when the caches are loaded and the system isn't busy with other tasks, e.g. Garbage Collection. All the timings are "noisy," but the fastest time is the least noisy. It is easy to show that the fastest timings are the most reproducible and therefore the most useful when timing different implementations of an algorithm. 
 
+THIS IS NOT A DECORATOR.
+
 Your timing measurement should have an output message something like this:
 ```
 Best time across 7 repeats of 5 runs per repeat: 1.85500779152 sec
