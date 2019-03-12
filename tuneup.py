@@ -44,33 +44,9 @@ def find_duplicate_movies(src):
     """Returns a list of duplicate movies from a src list"""
     movies = read_movies(src)
     # remove duplicates = set(); print dups = collections, enumerate, set:
-    # # WAY 1 --> 1st place
-    # return set(movies)
-    # # WAY 2 --> 3rd place
+    # # 3rd place
     movie_collection = collections.Counter(movies).items()
     return [movie for movie, count in movie_collection if count > 1]
-    # # WAY 3 --> 4th place
-    # dupes = [x for n, x in enumerate(movies) if x not in movies[:n]]
-    # return dupes
-    # # WAY 4 --> 2nd place
-    # duplicates = []
-    # movies_dict = {}
-    # for movie in movies:
-    #     if movie in movies_dict:
-    #         movies_dict[movie] += 1
-    #     else:
-    #         movies_dict[movie] = 1
-    #     if movies_dict[movie] > 1 and movie not in duplicates:
-    #         duplicates.append(movie)
-    # return duplicates
-
-    # """defunct funct"""
-    # duplicates = []
-    # while movies:
-    #     movie = movies.pop()
-    #     if is_duplicate(movie, movies):
-    #         duplicates.append(movie)
-    # return duplicates
 
 
 def timeit_helper():
@@ -93,7 +69,6 @@ def main():
     print('Found {} duplicate movies:'.format(len(result)))
     print('\n'.join(result))
     print(timeit_helper())
-    # print(profile())
 
 
 if __name__ == '__main__':
