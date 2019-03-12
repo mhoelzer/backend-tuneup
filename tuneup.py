@@ -11,7 +11,16 @@ import timeit
 
 def profile(func):
     """A function that can be used as a decorator to measure performance"""
-    raise NotImplementedError("Complete this decorator function")
+    def wrapper_profile(*args, **kwargs):
+        c_prof = cProfile.Profile()
+        c_prof.enable()
+        enabled_func = func(*args, **kwargs)
+        c_prof.disable()
+        sort_by = "cumulative"
+        profile_stats = pstats.Stats(c_prof).sort_stats(sort_by)
+        profile_stats.print_stats()
+        return enabled_func
+    return wrapper_profile
 
 
 def read_movies(src):
@@ -29,6 +38,7 @@ def is_duplicate(title, movies):
     return False
 
 
+@profile
 def find_duplicate_movies(src):
     """Returns a list of duplicate movies from a src list"""
     movies = read_movies(src)
@@ -60,6 +70,7 @@ def main():
     print('Found {} duplicate movies:'.format(len(result)))
     print('\n'.join(result))
     print(timeit_helper())
+    # print(profile())
 
 
 if __name__ == '__main__':
