@@ -50,7 +50,7 @@ Complete the missing decorator function to create a profiler which can be used t
 
 
 ## Part C
-Once you are satisfied with you decorator, apply it to the `find_duplicate_movies()` function to see where the most time is being spent. Edit all of the provided functions to reduce the overall time cost of the algorithm.
+Once you are satisfied with your decorator, apply it to the `find_duplicate_movies()` function to see where the most time is being spent. Edit all of the provided functions to reduce the overall time cost of the algorithm.
 
 Here are some expected timing results from before and after improving the find_duplicate_movies() function.
 
