@@ -6,6 +6,7 @@ __author__ = "mhoelzer"
 
 import cProfile
 import pstats
+import timeit
 
 
 def profile(func):
@@ -41,7 +42,16 @@ def find_duplicate_movies(src):
 
 def timeit_helper():
     """Part A:  Obtain some profiling measurements using timeit"""
-    # YOUR CODE GOES HERE
+    # code snippet to be executed only once
+    timeit_setup_import = """from __main__ import find_duplicate_movies"""
+    # code snippet whose execution time is to be measured
+    timeit_stmt = """find_duplicate_movies("movies.txt")"""
+    t = timeit.Timer(stmt=timeit_stmt, setup=timeit_setup_import)
+    repeats = 7
+    numbers = 3
+    result = t.repeat(repeat=repeats, number=numbers)
+    print("Best time across {} repeats of {} runs per repeat: {}".format(
+        repeats, numbers, min(result)/numbers))
 
 
 def main():
@@ -49,6 +59,7 @@ def main():
     result = find_duplicate_movies('movies.txt')
     print('Found {} duplicate movies:'.format(len(result)))
     print('\n'.join(result))
+    print(timeit_helper())
 
 
 if __name__ == '__main__':
